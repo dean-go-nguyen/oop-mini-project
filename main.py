@@ -19,6 +19,3 @@ if __name__ == "__main__":
 
     alice.display_info()
     bob.display_info()
-
-    print(alice.get_grade(math))
-    print(bob.get_grade(English()))
