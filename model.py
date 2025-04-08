@@ -6,10 +6,18 @@ class Subject:
     @property
     def name(self):
         return self._name
+    
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     @property
     def credits(self):
         return self._credits
+    
+    @credits.setter
+    def credits(self, credits):
+        self._credits = credits
 
     def __str__(self):
         return f"{self.name} (Credits: {self.credits})"
@@ -41,15 +49,25 @@ class Student:
     def name(self):
         return self.__name
 
+    @name.setter
+    def name(self, name):
+        self.__name = name
+
     @property
     def age(self):
         return self.__age
 
+    @age.setter
+    def age(self, value):
+        self.__age = value
+
     def add_subject(self, subject):
-        if subject.name not in self.__subjects:
+        if subject not in self.__subjects:
             self.__subjects.append(subject)
 
     def set_grade(self, subject, grade):
+        if not isinstance(grade, (int, float)) or not (0 <= grade <= 10):
+            return "Invalid grade. Must be between 0 and 10."
         if subject in self.__subjects:
             self.__grades[subject.name] = grade
         else:
